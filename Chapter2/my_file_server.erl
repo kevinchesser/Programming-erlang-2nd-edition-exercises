@@ -10,6 +10,8 @@ loop(Dir) ->
             %%Pid ! Msg - Send message to the Pid - self() argument identified the process sending the message
         {Client, {get_file, File}} ->
             Full = filename:join(Dir, File),
-            Client ! {self(), file:read_file(Full)}
+            Client ! {self(), file:read_file(Full)};
+        {Client, {put_file, File}} ->
+            Client ! {self(), file:open(File, write)}
     end,
     loop(Dir).
