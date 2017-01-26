@@ -1,7 +1,7 @@
--module(file_server).
+-module(my_file_server).
 -export([start/1, loop/1]).
 
-start(Dir) -> spawn(file_server, loop, [Dir]). %%Module, function, List of arguments
+start(Dir) -> spawn(my_file_server, loop, [Dir]). %%Module, function, List of arguments
 
 loop(Dir) ->
     receive
