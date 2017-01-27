@@ -1,0 +1,10 @@
+Processes and message passing
+Module, function, List of arguments - for spawn function spawn(Module, function, args)
+From, Message - Client gets the pid the message is from, list_dir is the message - when receiving messages from other processes
+Pid ! Msg - Send message to the Pid - self() argument identifies the process sending the message  
+
+
+Lists
+lists:map(F,L) - function that returns a list made by applying the fun F to every element of list L
+lists:filter(P, L) - function that returns a new list of all that elements E in L such that P(E) is true
+List comprehension - [F(X) || X <- L]  ex. [2*X || X<- L]. %Double each element of the list
