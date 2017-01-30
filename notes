@@ -10,3 +10,55 @@ lists:filter(P, L) - function that returns a new list of all that elements E in 
 List comprehension - [F(X) || X <- L]  ex. [2*X || X<- L]. %Double each element of the list
 List subtraction operator - X -- Y, Subtracts elements in Y from X
 List append operator - X ++ Y, Appends two lists together
+
+Guards
+Guards are used in function headers by using the when keyword
+    ex. max(X,Y) when X > Y -> X;
+        max(X,Y) -> Y.
+A guard is a series of guard expressions seperated by commas, GuardExp1,GuardExp2,GuardExp3... 
+    True if all the guard expressions evaluate to true
+Guard sequences are single guards or a series of guards seperated by semicolons G1;G2;G3...
+    True if at least one of the guards evaluates to true
+Guards can't call user defined functions
+The true (atom) guard can be used as a catchall at the end of an if expression
+    if
+        Guard -> Expressions;
+        Guard -> Expressions;
+        Guard -> Expressions;
+        ...
+        true -> Expressions
+    end
+
+
+Case
+ex.
+case Expression of
+    Pattern1 [when Guard1] -> Expression_sequence1;
+    Pattern2 [when Guard2] -> Expression_sequence1;
+    ...
+end
+
+if
+ex.
+if
+    Guard1 ->
+        Expression_sequence1;
+    Guard2 ->
+        Expression_sequence2;
+    ...
+end
+Can use the true atom as a catchall as the last guard otherwise an exception will be thrown if no Guard is matched
+    If an exception is desired then you would want to omit it
+
+Building Lists in Natural Order
+1. Always add elements to a list head
+2. Taking the elements from the head of an inputlist and adding them head first to an output list results in having the inputlist reversed
+3. Use lists:reverse/1 if you need it in the right order
+ex.
+my_function([H|T], Acc) ->
+    my_function(T, H|Acc);
+my_function([], Acc) ->
+    Acc.
+
+List ++ [H] is very inefficient and only acceptable for short lists
+
