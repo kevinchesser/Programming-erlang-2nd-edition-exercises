@@ -8,3 +8,5 @@ Lists
 lists:map(F,L) - function that returns a list made by applying the fun F to every element of list L
 lists:filter(P, L) - function that returns a new list of all that elements E in L such that P(E) is true
 List comprehension - [F(X) || X <- L]  ex. [2*X || X<- L]. %Double each element of the list
+List subtraction operator - X -- Y, Subtracts elements in Y from X
+List append operator - X ++ Y, Appends two lists together
