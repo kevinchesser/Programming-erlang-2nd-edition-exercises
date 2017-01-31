@@ -62,3 +62,7 @@ my_function([], Acc) ->
 
 List ++ [H] is very inefficient and only acceptable for short lists
 
+
+Using the shell
+Example of defining a function
+    Even = fun(X) -> (X rem 2) =:= 0 end.
