@@ -101,3 +101,20 @@ K=>V is used to update the value of an existing key K with a new value V or to a
 K:=V is used to update the value of an existing key with a new value V. This fails if the map being updated does not contain the new key K
 The best way to use them is to use K=>V the first time a key is defined and use Key:=Val each time the value of a specific key is changed
 List of BIFs for maps - Page 82,83
+
+try...catch
+ex.
+    try FuncOfExpressionSeq of
+        Pattern1 [when Guard1] -> Expressions1;
+        Pattern2 [when Guard2] -> Expressions2;
+        ...
+    catch
+        ExceptionType1: ExPattern1 [when ExGuard1] -> ExExpressions1;
+        ExceptionType2: ExPattern2 [when ExGuard2] -> ExExpressions2;
+        ...
+    after
+        AfterExpressions
+    end
+ExceptionType is an atom (throw, exit, or error) that tells us how the exception was generated - default is throw if none are specified
+After is to clean up anything done by FuncOfExpressionSeq
+The after section is not required
