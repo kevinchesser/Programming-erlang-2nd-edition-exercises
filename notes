@@ -4,7 +4,7 @@
 Processes and message passing
 Module, function, List of arguments - for spawn function spawn(Module, function, args)
 From, Message - Client gets the pid the message is from, list_dir is the message - when receiving messages from other processes
-Pid ! Msg - Send message to the Pid - self() argument identifies the process sending the message  
+Pid ! Msg - Send message to the Pid - self() argument identifies the process sending the message
 
 
 Lists
@@ -18,7 +18,7 @@ Guards
 Guards are used in function headers by using the when keyword
     ex. max(X,Y) when X > Y -> X;
         max(X,Y) -> Y.
-A guard is a series of guard expressions seperated by commas, GuardExp1,GuardExp2,GuardExp3... 
+A guard is a series of guard expressions seperated by commas, GuardExp1,GuardExp2,GuardExp3...
     True if all the guard expressions evaluate to true
 Guard sequences are single guards or a series of guards seperated by semicolons G1;G2;G3...
     True if at least one of the guards evaluates to true
@@ -89,3 +89,15 @@ Maps - more flexible than records but slower
 Can add new names dynamically
 Used to represent key-value data structures
 Good to use with JSON
+Elements are ordered by the keys
+Updating a map where the keys are not changed is a space-efficient operation
+Looking up the value of a key in a map is an efficient operation
+Key-Value serperator is either => or :=
+Create new map
+#{Key1 Op Val1, Key2 Op Val2, ...., KeyN Op ValN}
+Update map based on existing map
+NewMap = OldMap#{K1 Op Val1,...}
+K=>V is used to update the value of an existing key K with a new value V or to add a completely new K-V pair to the map. It always succeeds
+K:=V is used to update the value of an existing key with a new value V. This fails if the map being updated does not contain the new key K
+The best way to use them is to use K=>V the first time a key is defined and use Key:=Val each time the value of a specific key is changed
+List of BIFs for maps - Page 82,83
