@@ -1,3 +1,6 @@
+%All of this information if either quoted or rephrased in a way that I understand from the book or it's examples
+%The goal of this files is to give me a quick reference to many different topics in erlang
+
 Processes and message passing
 Module, function, List of arguments - for spawn function spawn(Module, function, args)
 From, Message - Client gets the pid the message is from, list_dir is the message - when receiving messages from other processes
@@ -28,7 +31,6 @@ The true (atom) guard can be used as a catchall at the end of an if expression
         ...
         true -> Expressions
     end
-
 
 Case
 ex.
@@ -62,7 +64,28 @@ my_function([], Acc) ->
 
 List ++ [H] is very inefficient and only acceptable for short lists
 
-
 Using the shell
 Example of defining a function
     Even = fun(X) -> (X rem 2) =:= 0 end.
+Record declarations can't be used in the shell - use rr to read definitions into the shell ex. rr("records.hrl").
+
+Records are tuples in disguise- same storage and preformance
+Records allow us to associate names with elements of tuples but you only have a fixed number of elements with non-changing names
+Use them if storage is an issue and you can represent your data using a fixed number of atoms
+Record declaration ex.
+    -record(Name, {
+                    key1 = Default1, %keys must be atoms, defaults will be taken if nothing is assigned when created
+                    key2 = Default2,
+                    key3, %This is like key3 = undefined
+                    ...
+                  })
+Record definitions can be stored in erlang source code files (.erl) or put in files with the extension .hrl which you include in .erl files
+    This is similar to .h files in C. It is the only wya to ensure that several Erlang modules use the same record definitions
+Somerecord = #recordname{key1=Val1, key2=Val2,...}. %Create new record
+NewRecord = Somerecord#recordname{keyN = ValN}. %Copy Somerecord into NewRecord and change keyN val
+Extract values - NewRecord#recordname.keyN. %would get the values from that key
+
+Maps - more flexible than records but slower
+Can add new names dynamically
+Used to represent key-value data structures
+Good to use with JSON
