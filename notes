@@ -118,3 +118,9 @@ ex.
 ExceptionType is an atom (throw, exit, or error) that tells us how the exception was generated - default is throw if none are specified
 After is to clean up anything done by FuncOfExpressionSeq
 The after section is not required
+Ex. catch every possible exception
+    try Expr
+    catch
+        _:_ -> ...  %matches anything
+    end
+When reading stacktraces the form is {Module, Function, Arity, Info}
