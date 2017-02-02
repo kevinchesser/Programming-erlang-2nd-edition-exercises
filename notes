@@ -124,3 +124,19 @@ Ex. catch every possible exception
         _:_ -> ...  %matches anything
     end
 When reading stacktraces the form is {Module, Function, Arity, Info}
+
+Binaries
+A binary is a data structre designed for storing large quantities of raw data in a space-efficient manner
+Should be used whenever possible for storing the contents of large quantites of unstrcutred data, 
+for example large strings or the contents of files
+The number of bits in a binary will be exactly divisible by 8 in mose cases. The in cases where it isn't it is
+referred to as a bitstring
+Binaries are written as a sequence of integers or strings eclosed in double less-than and greather than brackets <<data>>
+term_to_binary(Term) and binary_to_term(binary) are very useful for packing and unpacking complex data structures to
+be stored in files or sent over networks
+Page 102 for bit syntax - Seems very useful
+<<E1,E2,..,EN>>
+Ei = Value |
+     Value:Size |
+     Value/TypeSpecifierList |
+     Value:Size/TypeSpecifierList
