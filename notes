@@ -141,3 +141,24 @@ Ei = Value |
      Value/TypeSpecifierList |
      Value:Size/TypeSpecifierList
 We can write binaries to a file or socket but CAN'T write a bitstring to a file or socket since files and sockets work in bytes
+
+Macros
+-define(Constant, Replacement).
+-define(Func(Var1, Var2, ..., VarN), Replacement).
+Macros are expanded by the Erlang proprocessor when an expression of the form ?MacroName is encountered
+ex.
+    -define(macro1(X, Y), {a, X, Y).
+
+    foo(A) ->
+        ?macro1(A+10, b).
+    expands into
+    foo(A) ->
+        {a, A+10, b}.
+
+
+Numbers
+Base K Integers
+    K#Didgits to represent digit in other base ex. 16#af6bfa23, 2#00101010
+$ syntax
+represent integer code from ASCII ex. $a which is 97
+
