@@ -140,3 +140,4 @@ Ei = Value |
      Value:Size |
      Value/TypeSpecifierList |
      Value:Size/TypeSpecifierList
+We can write binaries to a file or socket but CAN'T write a bitstring to a file or socket since files and sockets work in bytes
