@@ -162,3 +162,14 @@ Base K Integers
 $ syntax
 represent integer code from ASCII ex. $a which is 97
 
+Short circuit booleans
+    Expr orelse Expor2
+    First evaluated Expr1. If Expr1 evaluated to 2 then Expr 2 is not evaluated.
+    If Expr1 evaluates to false then Expr2 is evaluated
+    Expr andalso Expr2
+    First evaluates Expr1. If Expr1 is true then Expr2 is evaluated. If Expr1 is
+    evaluated to false then Expr2 is not evaluated
+
+Types
+defined as 
+    T1 :: A | B | C ...
