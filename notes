@@ -173,3 +173,7 @@ Short circuit booleans
 Types
 defined as 
     T1 :: A | B | C ...
+
+Tools to analayze your programs
+Dialyzer
+Typer
