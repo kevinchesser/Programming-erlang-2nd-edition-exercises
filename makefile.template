@@ -1,0 +1,44 @@
+.SUFFIXES: .erl .beam .yrl
+
+.erl.beam:
+	erlc -W $<
+
+.erl.erl:
+	erlc -W $<
+
+ERL = erl -boot start_clean
+
+#List of erlang modules you want to compile
+#If they don't fit on one line then add a \ 
+#character to the end of the line and continue
+#on the next
+
+MODS = module1 module2 \
+       module3 ... special1 ...\
+       moduleN
+
+#The first target in any makefile is the default
+
+all: compile
+
+compile: ${MODS:%=%.beam} subdirs
+
+#special compilation reqs
+
+special1.beam: special1.erl
+	${ERL} -Dflag1 -W0 special1.erl
+
+#run an application from the makefile
+application1: compile
+	${ERL} -pa Dir1 -s application1 start Arg1 Arg2
+
+#the subdirs target compiles any code in the sub-directories
+subdirs:
+	cd dir1; $(MAKE)
+	cd dir2; $(MAKE)
+
+#remove all the code - clean
+clean:
+	rm -rf *.beam erl_crash.dump
+	cd dir1; $(MAKE) clean
+	cd dir2; $(MAKE) clean

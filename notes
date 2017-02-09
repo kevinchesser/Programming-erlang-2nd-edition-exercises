@@ -177,3 +177,31 @@ defined as
 Tools to analayze your programs
 Dialyzer
 Typer
+
+Manipulate code path
+-spec code:add_patha(Dir) => true |｛error, bad_directory}
+    Add a new directory, Dir, to the start of the load path
+-spec code:add_pathz(Dir) => true |｛error, bad_directory}
+    Add a new directory, Dir, to the end of the load path
+Usual convention is to put these commands in a file called .erlang in your home directory
+Your .erlang file is first read and all the commands are evaluated when you start the shell
+To figure out where erlang thinks your home is(might not be where your home normall is) do
+init:get_argument(home).
+
+Compile and run from the command prompt
+erlc hello.erl
+erl -noshell -s hello start -s init stop
+hello is the module name and start is the function name
+If you wanted to take commandline arguments then you could do
+erlc fac1.erl %would take in a number and compute the factorial
+erl -noshell -s fac1 main 25 %taking the argument 25 to the function main
+You can also use escripts
+Makefiles
+
+Reading the crashdump
+Web based crash analyzer
+crashdump_viewer:start().
+and it will be at localhost:8888
+
+Access the man pages for a module
+erl -man module

@@ -1,5 +1,5 @@
 -module(lib_misc).
--export([for/3,pythag/1,odds_and_evens2/1]).
+-export([for/3,pythag/1,odds_and_evens2/1, quicksort/1]).
 
 for(Max, Max, F) ->
     [F(Max)];
