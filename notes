@@ -1,11 +1,41 @@
 %All of this information if either quoted or rephrased in a way that I understand from the book or it's examples
 %The goal of this files is to give me a quick reference to many different topics in erlang
+%Not all of the chapters have folders in this repo because not every chapter
+%in the book corresponds with something that has examples. Some chapters are
+%mostly theory
 
 Processes and message passing
 Module, function, List of arguments - for spawn function spawn(Module, function, args)
 From, Message - Client gets the pid the message is from, list_dir is the message - when receiving messages from other processes
 Pid ! Msg - Send message to the Pid - self() argument identifies the process sending the message
-
+-Creating and destroying processes is very fast
+-Sending messages between processes is very fast
+-Processes behave the same way on all operating systems
+-We can have very large numbers of processes
+-Processes share no memory and are completely independent
+-The only way for processes to interact is through message passing
+! is called the send operator
+Can do Pid1 ! Pid2 ! ... ! Msg to send Msg to all of the pids listed
+If you are writing a program that uses a large number of procesess it is a
+good idea to find out how many processes can fit into physical memory before
+the system starts swapping memory to tisk and make sure that your program will
+run in physical memory
+    Start the erlang emulator to exceed the system limit of erlang processes
+    erl -P number ex. erl -P 300000
+    The actual value chosen is the next highest power of two that is greater
+    than the supplied argument
+Receive with a timeout
+receive
+    Pattern1 [when Guard1] ->
+    Expressions1;
+    Pattern2 [when Guard2] ->
+    Expressions2;
+    ...
+after Time ->
+    Expressions
+end
+after 0 causes the timeout to occur immediately
+after infinity makes the timeout never trigger
 
 Lists
 lists:map(F,L) - function that returns a list made by applying the fun F to every element of list L
