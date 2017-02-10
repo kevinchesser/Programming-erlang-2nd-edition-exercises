@@ -36,6 +36,7 @@ after Time ->
 end
 after 0 causes the timeout to occur immediately
 after infinity makes the timeout never trigger
+Register processes so that other processes can find out about it
 
 Lists
 lists:map(F,L) - function that returns a list made by applying the fun F to every element of list L
