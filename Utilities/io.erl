@@ -1,3 +1,5 @@
+%Useful in hackerrank challenges
+
 main() ->
     { ok, [N]} = io:fread("", "~d"),
     io:format("~p~n", [N]),
