@@ -244,3 +244,34 @@ and it will be at localhost:8888
 
 Access the man pages for a module
 erl -man module
+
+Distributed erlang nodes
+erl -sname name
+ex. erl -sname gandalf
+$ erl -sname gandalf
+Eshell V8.0  (abort with ^G)
+(gandalf@40HW012040)1> kvs:start().
+true
+(gandalf@40HW012040)2> kvs:lookup(weather).
+{ok,fine}
+(gandalf@40HW012040)3>
+
+erl -sname bilbo
+(bilbo@40HW012040)3> rpc:call(gandalf@40HW012040, kvs, store, [weather, fine]).
+true
+(bilbo@40HW012040)4> rpc:call(gandalf@40HW012040, kvs, store, [weather, fine]).
+{badrpc,{'EXIT',{badarg,[{kvs,rpc,1,
+                              [{file,"kvs.erl"},{line,14}]},
+                         {rpc,'-handle_call_call/6-fun-0-',5,
+                              [{file,"rpc.erl"},{line,187}]}]}}}
+(bilbo@40HW012040)5> rpc:call(gandalf@40HW012040, kvs, store, [weather, fine]).
+true
+(bilbo@40HW012040)6> rpc:call(gandalf@40HW012040, kvs, lookup, [weather]).
+{ok,fine}
+
+-sname for nodes on the same machine, can use for diff machines on same subnet
+-name for different networks/machines
+    Must ensure that both nodes have the same cookie
+    ex. erl -name bilbo -setcookie abc
+
+Easiest way to connect a node is to to net_adm:ping(Node)
