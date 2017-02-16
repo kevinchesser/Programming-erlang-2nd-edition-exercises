@@ -275,3 +275,20 @@ true
     ex. erl -name bilbo -setcookie abc
 
 Easiest way to connect a node is to to net_adm:ping(Node)
+Modules for distribution
+rpc - remote procedure call services
+global - functions for the registration of names and locks in a distributed 
+system and for the maintenance of a fully connected network
+Send message - {RegName, Node} ! Msg 
+    sends the message Msg to the registered process RegName on the node Node
+
+The set of connected nodes having the same cookie defines an Erlang cluster
+Set the cookie with erlang:set_cookie(node(), atom) or use the cookie file
+in $HOME/.erlang.cookie and put that on all machines
+cookies set with erlang -setcookie abc can be discovered using the ps command
+so it is insecure
+Distributed erlang sessions are not encrypted but can be set up to be run over 
+encrypted channels
+Should only use erlang based distribution when you own all of the machines and
+want to control them from a single machine
+Socker-Based distribution otherwise

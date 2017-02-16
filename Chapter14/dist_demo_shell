@@ -1,0 +1,17 @@
+erl -sname gandalf
+Eshell V8.0  (abort with ^G)
+(gandalf@40HW012040)1> c(dist_demo).
+{ok,dist_demo}
+(gandalf@40HW012040)2> Pid = dist_demo:start(bilbo@40HW012040).
+<9779.71.0>
+(gandalf@40HW012040)3> dist_demo:rpc(Pid, erlang, node, []).
+bilbo@40HW012040
+(gandalf@40HW012040)4>
+
+
+erl -sname bilbo
+Eshell V8.0  (abort with ^G)
+(bilbo@40HW012040)1> c(dist_demo).
+{ok,dist_demo}
+(bilbo@40HW012040)2>
+
